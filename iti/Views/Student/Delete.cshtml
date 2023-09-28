@@ -1,0 +1,87 @@
+﻿@model Student
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<form asp-action="SaveDelete" asp-controller="Student" class="text-capitalize">
+    <div class="container-fluid callback my-5 pt-5">
+        <div class="container pt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="bg-white border rounded p-4 p-sm-5 wow fadeInUp" data-wow-delay="0.5s" style="background-color:#6f4518">
+                        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                            <p class="d-inline-block border rounded fw-semi-bold py-1 px-3" style="color:#6f4518">
+                                Delete Student Data
+                            </p>
+                            <h1 class="display-5 mb-5" style="color:#6f4518"> Student Data</h1>
+                        </div>
+                        <input asp-for="Id" hidden value="@Model.Id" />
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input class="form-control" asp-for="Name" value="@Model.Name" disabled>
+                                    <label for="name">Stuedent Name</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input class="form-control" asp-for="Code" value="@Model.Code" placeholder="Name" disabled>
+                                    <label for="name">Department code</label>
+                                    <span asp-validation-for="Code" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input class="form-control" asp-for="Address" value="@Model.Address" disabled>
+                                    <label>Student Address</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input class="form-control" asp-for="Age" value="@Model.Age" disabled>
+                                    <label>Student Age</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input class="form-control" asp-for="Level" value="@Model.Level" disabled>
+                                    <label>Student Level</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input class="form-control" asp-for="Gpa" value="@Model.Gpa" disabled>
+                                    <label>Student Gpa</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                
+                                <div class="col-sm-12 ">
+                                    <div class="form-floating">
+                                        <span><img src="/Uploads/@Model.Image" width="100" height="100" class="m-2" /> </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <select  asp-for="@Model.Department.Name" class="form-control text-center p-2" disabled>
+                                        <option>
+                                            @Model.Department.Name
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <input class="btn text-white text-capitalize w-100 py-3" style="background-color:#6f4518" type="submit" value="Delete Data" />
+                            </div>
+                            <div class="col-12 text-center">
+                                <a class="btn text-white text-capitalize w-100 py-3" style="background-color:#6f4518" asp-action="Index"> back to student list</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

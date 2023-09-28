@@ -1,0 +1,112 @@
+﻿@model List<iti.ViewModelClasses.StudentWithDepartmentcs>
+
+<h1 class="text-center m-4" style="color:#6f4518;">Student  Data</h1>
+@if (User.IsInRole("admin"))
+{
+    <a asp-action="InsertNew" asp-controller="Student" class="btn m-3" style="background-color:#6f4518;color:white"> <i class="fas fa-user-plus m-2"></i>insert new student</a>
+}
+<table class="table text-capitalize text-center">
+    <thead>
+        <tr>
+            <th scope="col">name</th>
+            <th scope="col">Code</th>
+            <th scope="col">address</th>
+            <th scope="col">age</th>
+            <th scope="col">image</th>
+            <th scope="col">department name</th>
+            <th scope="col">Level</th>
+            <th scope="col">gpa</th>
+            <th scope="col">courses</th>
+            <th scope="col">award(gpa > 3.5)</th>
+            @if (User.IsInRole("admin"))
+            {
+                <th scope="col">operations</th>
+            }
+
+        </tr>
+    </thead>
+    <tbody>
+        
+       
+        @foreach(var obj in Model)
+        {
+            @if (User.IsInRole("student") && User.Identity.Name == obj.studentName)
+            {
+            <tr class="text-dark align-middle"  style="background-color:@obj.color">
+                <td scope="row"> @obj.studentName</td>
+                <td scope="row"> @obj.code</td>
+                <td>@obj.studentAddress</td>
+                <td>@obj.studentAge</td>
+                <td><img src="~/Uploads/@obj.Image" width="100" height="100" class="rounded-circle"></td>
+                <td>@obj.deptName</td>
+                <td>@obj.studentLevel</td>
+                <td>@obj.studentGpa</td>
+                <td>
+                    <a asp-action="StudentCoursesDetailes" asp-controller="StudentsCourses" asp-route-id="@obj.Id" style="color:#6f4518;border-bottom:1px solid #6f4518" class="p-2 rounded"><i class="fas fa-calendar m-1"></i>courses detailes</a>
+
+                </td>
+                <td>
+                    @if (obj.award)
+                    {
+
+                        <i class="fas fa-award" style="color:#a7c957"></i>
+                    }
+                    else
+                    {
+                        <i class="fas fa-clock"></i>
+                    }
+                </td>
+                    @if (User.IsInRole("admin"))
+                    {
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@obj.Id" class="m-3" style="color:#d84413;"><i class="fas fa-user-times m-2" style="color: #d84413;"></i>delete</a>
+                        <a asp-action="Edite" asp-route-id="@obj.Id" style="color:#6f4518">edite <i class="fas fa-pen" style="color: #700505;"></i></a>
+                    </td>
+                }
+                </tr>
+            }
+            
+            else if (User.IsInRole("admin"))
+            {
+                <tr class="text-dark align-middle" style="background-color:@obj.color">
+                    <td scope="row"> @obj.studentName</td>
+                    <td scope="row"> @obj.code</td>
+                    <td>@obj.studentAddress</td>
+                    <td>@obj.studentAge</td>
+                    <td><img src="~/Uploads/@obj.Image" width="100" height="100" class="rounded-circle"></td>
+                    <td>@obj.deptName</td>
+                    <td>@obj.studentLevel</td>
+                    <td>@obj.studentGpa</td>
+                    <td>
+                        <a asp-action="StudentCoursesDetailes" asp-controller="StudentsCourses" asp-route-id="@obj.Id" style="color:#6f4518;border-bottom:1px solid #6f4518" class="p-2 rounded"><i class="fas fa-calendar m-1"></i>courses detailes</a>
+
+                    </td>
+                    <td>
+                        @if (obj.award)
+                        {
+
+                            <i class="fas fa-award" style="color:#a7c957"></i>
+                        }
+                        else
+                        {
+                            <i class="fas fa-clock"></i>
+                        }
+                    </td>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <td>
+                            <a asp-action="Delete" asp-route-id="@obj.Id" class="m-3" style="color:#d84413;"><i class="fas fa-user-times m-2" style="color: #d84413;"></i>delete</a>
+                            <a asp-action="Edite" asp-route-id="@obj.Id" style="color:#6f4518">edite <i class="fas fa-pen" style="color: #700505;"></i></a>
+                        </td>
+                    }
+                </tr>
+            }
+            
+
+                
+        }
+
+       
+    </tbody>
+
+</table>

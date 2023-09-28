@@ -1,0 +1,55 @@
+﻿@model StudentsCourses
+@{
+    ViewData["Title"] = "Edite";
+}
+
+<form asp-action="SaveEdite" asp-controller="StudentsCourses" class="text-capitalize">
+    <div class="container-fluid callback my-5 pt-5">
+        <div class="container pt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="bg-white border rounded p-4 p-sm-5 wow fadeInUp" data-wow-delay="0.5s" style="background-color:#6f4518">
+                        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                            <p class="d-inline-block border rounded fw-semi-bold py-1 px-3" style="color:#6f4518">
+                                Edite Student Course
+                            </p>
+                            <h1 class="display-5 mb-5" style="color:#6f4518"> Student Data</h1>
+                        </div>
+                        <input asp-for="Id" value="@Model.Id" hidden/>
+                        <div class="row g-3 ">
+                            <input asp-for="Id" value="@Model.Id" hidden />
+                            <div class="col-sm-6" hidden>
+                                <div class="form-floating">
+                                    <input class="form-control" asp-for="Student_id" value="@Model.Student_id" >
+                                    <label for="name">Student Name</label>
+                                    <span asp-validation-for="Student_id" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6" hidden>
+                                <div class="form-floating">
+                                    <input class="form-control" asp-for="Course_id" value="@Model.Course_id" >
+                                    <label for="name">Course Name</label>
+                                    <span asp-validation-for="Course_id" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="form-floating">
+                                    <input class="form-control" asp-for="Degree" value="@Model.Degree">
+                                    <label>enter the new Course Degree</label>
+                                    <span asp-validation-for="Degree" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <input class="btn text-white text-capitalize w-100 py-3" style="background-color:#6f4518" type="submit" value="Edite Data" />
+                            </div>
+                            <div class="col-12 text-center">
+                                <a class="btn text-white text-capitalize w-100 py-3" style="background-color:#6f4518" asp-action="StudentCoursesDetailes" asp-route-id="@Model.Student_id"> back to Student's courses</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

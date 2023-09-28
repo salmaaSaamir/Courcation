@@ -1,0 +1,40 @@
+﻿@model iti.ViewModelClasses.RoleViewModel
+
+@{
+    ViewData["Title"] = "NewRole";
+}
+<form asp-action="NewRole" class="text-capitalize">
+    <div class="container-fluid callback my-5 pt-5">
+        <div class="container pt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="bg-white border rounded p-4 p-sm-5 wow fadeInUp" data-wow-delay="0.5s" style="background-color:#6f4518">
+                        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                            <p class="d-inline-block border rounded fw-semi-bold py-1 px-3" style="color:#6f4518">
+                                Add Role
+                            </p>
+                            <h1 class="display-5 mb-5" style="color:#6f4518">  Add Role Form </h1>
+                        </div>
+                        <div class="row g-3">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="col-sm-12">
+                                <div class="form-floating">
+                                    <input class="form-control" asp-for="RoleName" placeholder="code">
+                                    <label for="RoleName">Role name</label>
+                                    <span asp-validation-for="RoleName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <input class="btn text-white text-capitalize w-100 py-3" style="background-color:#6f4518" type="submit" value="add role" />
+                            </div>
+                            <div class="col-12 text-center">
+                                <a class="btn text-white text-capitalize w-100 py-3" style="background-color:#6f4518" asp-action="Index" asp-controller="Home"> back to Home</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

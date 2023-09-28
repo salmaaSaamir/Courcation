@@ -1,0 +1,24 @@
+﻿@model Department
+
+<div class="col-sm-6">
+    <div class="form-floating">
+        <input class="form-control" asp-for="Name" placeholder="Name">
+        <label for="name">Department Name</label>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+</div>
+<div class="col-sm-6">
+    <div class="form-floating">
+        <input class="form-control" asp-for="Code" placeholder="code">
+        <label for="name">Department code</label>
+        <span asp-validation-for="Code" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="col-sm-12">
+    <div class="form-floating">
+        <input class="form-control" asp-for="ManagerName" placeholder="ManagerName">
+        <label>Department Manager Name</label>
+        <span asp-validation-for="ManagerName" class="text-danger"></span>
+    </div>
+</div>

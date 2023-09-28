@@ -1,0 +1,35 @@
+﻿@model List<Course>
+@{
+    ViewData["Title"] = "GetSpecificCourses";
+}
+
+<h1 class="text-center m-5" style="color:#6f4518">@ViewBag.DeptName Courses</h1>
+
+<div class="d-flex align-items-center justify-content-between text-capitalize m-3">
+    <a asp-action="Index" asp-controller="Department" class="btn m-4" style="background-color:#6f4518;color:white">Back to departments</a>
+    <h2 style="color:#6f4518">
+        total Courses : @ViewBag.totalCourses
+    </h2>
+</div>
+
+<table class="table text-capitalize text-center">
+    <thead>
+        <tr>
+            <th scope="col">course code</th>
+            <th scope="col">course name</th>
+            <th scope="col">Course Hours</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr class="p-4">
+                <td>@obj.CourseCode</td>
+                <td>@obj.CourseName</td>
+                <td>@obj.Hours</td>
+               
+            </tr>
+        }
+    </tbody>
+</table>

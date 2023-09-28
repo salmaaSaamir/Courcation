@@ -1,0 +1,39 @@
+﻿@model List<Course>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center" style="color:#6f4518;">Courses Data</h1>
+
+<a asp-action="Create" class="btn m-3" style="background-color:#6f4518;color:white"><i class="fas fa-plus m-2"></i> add New course</a>
+<table class="table text-capitalize text-center">
+    <thead>
+        <tr>
+            <th scope="col">course code</th>
+            <th scope="col">course name</th>
+            <th scope="col">course hours</th>
+            <th scope="col">Department name</th>
+            <th scope="col">operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr class="p-4">
+                <td>@obj.CourseCode</td>
+                <td>@obj.CourseName</td>
+                <td>@obj.Hours</td>
+                <td>@obj.Department.Name</td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@obj.Id" class="m-3" style="color:#d84413">
+
+                        <i class="fas  fa-user-times m-2" style="color: #d84413;"></i>delete
+                    </a>
+                    <a asp-action="Edite" asp-controller="Courses" asp-route-id="@obj.Id" style="color:#6f4518"> edite <i class="fas fa-pen" style="color: #700505;"></i></a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

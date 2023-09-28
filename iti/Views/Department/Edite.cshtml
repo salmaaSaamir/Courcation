@@ -1,0 +1,34 @@
+﻿@model Department
+@{
+    ViewData["Title"] = "Edite";
+}
+
+<form asp-action="SaveEdite" asp-controller="Department" class="text-capitalize">
+    <div class="container-fluid callback my-5 pt-5">
+        <div class="container pt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="bg-white border rounded p-4 p-sm-5 wow fadeInUp" data-wow-delay="0.5s" style="background-color:#6f4518">
+                        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                            <p class="d-inline-block border rounded fw-semi-bold py-1 px-3" style="color:#6f4518">
+                                Edite department Data
+                            </p>
+                            <h1 class="display-5 mb-5" style="color:#6f4518"> Department Data</h1>
+                        </div>
+                        <input asp-for="Id" hidden value="@Model.Id" />
+                        <div class="row g-3">
+                            <partial name="_DeptForm" model="Model" />
+                            <div class="col-12 text-center">
+                                <input class="btn text-white text-capitalize w-100 py-3" style="background-color:#6f4518" type="submit" value="Edite Data" />
+                            </div>
+                            <div class="col-12 text-center">
+                                <a class="btn text-white text-capitalize w-100 py-3" style="background-color:#6f4518" asp-action="Index"> back to departments list</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

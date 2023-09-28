@@ -1,0 +1,65 @@
+﻿@model StudentsCourses
+@{
+    ViewData["Title"] = "EnrollCourse";
+    SelectList items = new SelectList(ViewBag.Courses, "Id", "CourseName");
+}
+<div asp-validation-summary="All"></div>
+<form asp-action="SaveEnroll" asp-controller="StudentsCourses" class="text-capitalize">
+    <div class="container-fluid callback my-5 pt-5">
+        <div class="container pt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="bg-white border rounded p-4 p-sm-5 wow fadeInUp" data-wow-delay="0.5s" style="background-color:#6f4518">
+                        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                            <p class="d-inline-block border rounded fw-semi-bold py-1 px-3" style="color:#6f4518">
+                                Enroll course 
+                            </p>
+                            <h1 class="display-5 mb-5" style="color:#6f4518"> Course Data</h1>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input class="form-control" asp-for="Student_id" value="@ViewBag.StdId.Id" hidden>
+                                </div>
+                            </div>
+                            @if (items.Count()!=0)
+                            {
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <select asp-items="items" asp-for="Course_id" class="form-control text-center p-2">
+                                            <option value="0">--select an option--</option>
+                                        </select>
+                                        <span asp-validation-for="Course_id" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                @if (User.IsInRole("admin"))
+                                {
+                                    <div class="col-sm-12">
+                                        <div class="form-floating text-capitalize">
+                                            <input class="form-control" asp-for="Degree" value="0" disabled>
+                                            <label>Degree</label>
+                                            <span class="text-capitalize text-primary"> after pass the course come back and edite the degree</span>
+                                            <span asp-validation-for="Degree" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                }
+                                <div class="col-12 text-center">
+                                    <input class="btn text-white text-capitalize w-100 py-3" style="background-color:#6f4518" type="submit" value="Enroll Course" />
+                                </div>
+                            }else{
+                                <div class="col-12 text-center">
+                                    <input class="form-control text-capitalize text-center  py-3" value="no courses available for you yet" disabled>
+                                </div>
+                            }
+                           
+                            <div class="col-12 text-center">
+                                <a class="btn text-white text-capitalize w-100 py-3" style="background-color:#6f4518" asp-action="StudentCoursesDetailes" asp-route-id="@ViewBag.StdId.Id"> back to Student Card</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
